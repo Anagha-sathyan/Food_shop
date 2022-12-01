@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SHOPIE</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'hml/img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'hml/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'hml/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Categories Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+            {% for i in pr %}
+
+            <div class="col-lg-4 col-md-6 pb-1">
+
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <h2 class= "text-centre">{{i.name}} </h2>
+                    <a href="{{i.get_url}}" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{{i.img.url}}" alt="" style="height:250px;width=200px;">
+                    </a>
+                    <p>{{i.desc|truncatewords:10}}</p><br>
+
+                    <p class="text-right">Rs.{{i.price}}</p>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+        <div class="container-fluid bg-secondary my-5">
+            <div class="row justify-content-md-center py-5 px-xl-5">
+                <div class="col-md-6 col-12 py-5">
+                    <div class="text-center mb-2 pb-2">
+                        <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-2">Thanks for Visiting</span></h2>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    <script src="{% static 'hml/mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'hml/mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'hml/js/main.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}

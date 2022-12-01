@@ -1,0 +1,324 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SHOPIE</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'hml/img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'hml/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'hml/css/style.css' %}" rel="stylesheet">
+    <style>
+
+.dropbtn {
+  background-color: orange;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  left: 30px;
+
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>
+
+</head>
+
+<body>
+
+<!--  &lt;!&ndash; Topbar Start &ndash;&gt;-->
+<!--    <div class="container-fluid">-->
+<!--        <div class="row bg-secondary py-2 px-xl-5">-->
+<!--            <div class="col-lg-6 d-none d-lg-block">-->
+
+<!--            </div>-->
+
+<!--        </div>-->
+<!--        <div class="row align-items-center py-3 px-xl-5">-->
+<!--            <div class="col-lg-3 d-none d-lg-block">-->
+<!--                <a href="" class="text-decoration-none">-->
+<!--                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>SHOPIE</h1>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="col-lg-8 col-8 text-left">-->
+<!--                <form action="">-->
+<!--                    <div class="input-group">-->
+<!--                        <input type="text" class="form-control" placeholder="Search for products">-->
+<!--                        <div class="input-group-append">-->
+<!--                            <span class="input-group-text bg-transparent text-primary">-->
+<!--                                <i class="fa fa-search"></i>-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-2 d-none d-lg-block">
+                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="" style="height: 65px;width:45; margin-top: -1px; padding: 0 30px;">
+                    <h6 class="m-0">Food items</h6>
+<!--                    <i class="fa fa-angle-down text-dark"></i>-->
+                </a>
+                <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
+                   {% for x in ct %}
+                    <div class="navbar-nav w-100 overflow-hidden" style="height: 50px; width: 50px">
+                        <a href={{x.get_url}} class="nav-item nav-link">{{x.name}}</a>
+                    </div>
+                    {% endfor %}
+                </nav>
+            </div>
+            <div class="col-lg-9">
+
+                <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" style="height: 410px;">
+                            <img class="img-fluid" src="{% static 'hml/img/food.jpg' %}" alt="Image" style="height=500px;width=800px;background-size: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                 <div class="dropdown">
+                                          <button class="dropbtn">FILTER</button>
+                                          <div class="dropdown-content">
+                                          <a href="/">All </a>
+                                              {% for i in ct %}
+                                          <a href={{i.get_url}}>{{i.name}} </a>
+                                          {% endfor %}
+                                          </div>
+                                        </div>
+                                <div class="p-3" style="max-width: 700px;">
+<!--                                    <div class="dropdown">-->
+<!--                                        <button class="dropbtn">Dropdown-->
+<!--                                          <i class="fa fa-caret-down"></i>-->
+<!--                                        </button>-->
+<!--                                        {% for x in ct %}-->
+<!--                                        <div class="dropdown-content">-->
+<!--                                          <a href="{{x.grt_url}}">{{x.name}}</a>-->
+<!--                                        </div>-->
+<!--                                        {% endfor %}-->
+<!--                                     </div>-->
+<!--                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>-->
+
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Quality Food</h3>
+                                          <div class="col-lg-20 col-20 text-left">
+                                                <form action="{% url 'search' %}" method="GET">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="Search for products" name="q">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text bg-transparent text-primary">
+                                                                <i class="fa fa-search"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+<!--                                    <a href="" class="btn btn-light py-2 px-3">Order Now</a>-->
+                                </div>
+                            </div>
+                        </div>
+<!--                        <div class="carousel-item" style="height: 410px;">-->
+<!--                            <img class="img-fluid" src="{% static 'hml/img/carousel-2.jpg' %}" alt="Image">-->
+<!--                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">-->
+<!--                                <div class="p-3" style="max-width: 700px;">-->
+<!--                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>-->
+<!--                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Affordable Price</h3>-->
+<!--                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">-->
+<!--                        <div class="btn btn-dark" style="width: 45px; height: 45px;">-->
+<!--                            <span class="carousel-control-prev-icon mb-n2"></span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a class="carousel-control-next" href="#header-carousel" data-slide="next">-->
+<!--                        <div class="btn btn-dark" style="width: 45px; height: 45px;">-->
+<!--                            <span class="carousel-control-next-icon mb-n2"></span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+                    </div>
+                </div>
+         </div>
+        </div>
+    </div>
+<!--<-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+        <div class="container-fluid pt-5">
+            <div class="row px-xl-5 pb-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center border mb-4" style="padding: 10px;">
+                        <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                        <h5 class="font-weight-semi-bold m-0">Quality Food</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center border mb-4" style="padding: 10px;">
+                        <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                        <h5 class="font-weight-semi-bold m-0">Fast Deliver</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center border mb-4" style="padding: 10px;">
+                        <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                        <h5 class="font-weight-semi-bold m-0">No return!!</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center border mb-4" style="padding: 10px;">
+                        <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                        <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                    </div>
+                </div>
+            </div>
+     </div>
+<!--   <-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+            {% for i in pg.object_list %}
+
+            <div class="col-lg-4 col-md-4 pb-1">
+
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <h2 class= "text-centre">{{i.name}} </h2>
+                    <a href="{{i.get_url}}" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{{i.img.url}}" alt="" style="height:250px;width=200px;">
+                    </a>
+                    <p>{{i.desc|truncatewords:10}}</p><br>
+
+                    <p class="text-right">Rs.{{i.price}}</p>
+
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+
+
+         </div>
+        </div>
+    <!-- Categories End -->
+
+
+    <!-- Offer Start -->
+            <div class="container-fluid offer pt-5">
+             <div class="row px-xl-5">
+                <div class="col-md-6 pb-4">
+                    <div class="position-relative bg-secondary text-center text-md-right text-white mb-2 py-3 px-3">
+                        <img src="{% static 'hml/img/hotitem.jpg' %}" alt="">
+                        <div class="position-relative" style="z-index: 1;">
+                            <h5 class="text-uppercase text-primary mb-3">20% off the all order</h5>
+                            <h1 class="mb-4 font-weight-semi-bold">Hot items </h1>
+                            <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 pb-4">
+                    <div class="position-relative bg-secondary text-center text-md-left text-white mb-2 py-3 px-3">
+                        <img src="{% static 'hml/img//cold-coffee.jpg' %}" alt="" style="height=200;">
+                        <div class="position-relative" style="z-index: 1;">
+                            <h5 class="text-uppercase text-primary mb-3">20% off the all order</h5>
+                            <h1 class="mb-4 font-weight-semi-bold">Cold items</h1>
+                            <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Offer End -->
+
+
+    <!-- Products Start -->
+
+    <!-- Products End -->
+
+    <!-- footer Start -->
+        <div class="container-fluid bg-secondary my-3">
+            <div class="row justify-content-md-center py-3 px-xl-3">
+                <div class="col-md-6 col-12 py-3">
+                    <div class="text-center mb-2 pb-2">
+                        {% for p in pg.paginator.page_range %}
+                        <a href="?page={{p}}" class="btn btn-light btn sm {% if pg.number == p %} activate {% endif %}">{{p}}</a>
+                        {% endfor %}<br>
+                        <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-5">Thanks for Visiting</span></h2>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    <!-- Subscribe End -->
+
+
+    <!-- Products Start -->
+
+
+
+
+    <!-- Contact Javascript File -->
+<!--    <script src="{% static 'hml/mail/jqBootstrapValidation.min.js' %}"></script>-->
+<!--    <script src="{% static 'hml/mail/contact.js' %}"></script>-->
+
+<!--    &lt;!&ndash; Template Javascript &ndash;&gt;-->
+<!--    <script src="{% static 'hml/js/main.js' %}"></script>-->
+
+</body>
+
+</html>
+{% endblock %}

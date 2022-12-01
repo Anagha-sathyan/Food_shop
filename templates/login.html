@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body{
+    font-family: Calibri, Helvetica, sans-serif;
+    background-color: lavender;
+  }
+  .container {
+      padding: 50px;
+    background-color: lavender;
+  }
+
+  input[type=text], input[type=password], textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: light pink;
+    outline: none;
+  }
+
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  .registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  .registerbtn:hover {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+<div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Login</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="/">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Shop Detail</p>
+            </div>
+        </div>
+    </div>
+<form action="login" method="POST">
+    {% csrf_token %}
+    <div>
+    {% for message in messages %}
+    <h4>{{message}}</h4>
+    {% endfor %}
+    </div>
+  <div class="container" style="padding: 10px 0;">
+
+<label> Username: </label>
+<input type="text" name="username" placeholder="Username" size="15" required />
+<label for="psw"><b>Password</b></label>
+<input type="password" placeholder="Enter Password" name="password" id="psw" required>
+
+
+<button type="submit" class="registerbtn">Login</button>
+  </div>
+</form>
+</body>
+</html>
+{% endblock %}
